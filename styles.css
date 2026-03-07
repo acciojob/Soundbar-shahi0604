@@ -1,89 +1,31 @@
-/*  your css code here. If applicable */
-:root {
-  --page-bg: #f4f2f8;
-  --panel-bg: #9c5ad8;
-  --btn-bg: #6f3aa8;
-  --btn-bg-hover: #5b2f8b;
-  --btn-text: #efe9fb;
-  --shadow: rgba(41, 20, 66, 0.25);
-}
-
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
-  background: var(--page-bg);
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
+  height: 100vh;
+  background: #f4f4f4;
+  font-family: Arial, sans-serif;
 }
 
-.soundbar {
-  width: min(980px, 100%);
-}
-
-.panel {
-  background: var(--panel-bg);
-  border-radius: 6px;
-  padding: 42px 32px;
-  box-shadow: 0 20px 35px var(--shadow);
+#buttons {
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  justify-content: center;
+  gap: 15px;
 }
 
 .btn {
+  padding: 15px 25px;
+  font-size: 16px;
   border: none;
-  border-radius: 4px;
-  padding: 10px 18px;
-  background: var(--btn-bg);
-  color: var(--btn-text);
-  font-size: 13px;
-  letter-spacing: 0.2px;
-  text-transform: lowercase;
   cursor: pointer;
-  box-shadow: 0 6px 12px rgba(34, 12, 58, 0.25);
-  transition: transform 0.12s ease, background 0.12s ease;
+  background: purple;
+  color: white;
+  border-radius: 5px;
 }
 
-.btn:hover,
-.btn:focus-visible {
-  background: var(--btn-bg-hover);
-  transform: translateY(-1px);
-  outline: none;
-}
-
-.btn:active {
-  transform: translateY(1px);
+.btn:hover {
+  opacity: 0.8;
 }
 
 .stop {
-  background: #5a2f84;
-}
-
-.stop:hover,
-.stop:focus-visible {
-  background: #4b266f;
-}
-
-@media (max-width: 600px) {
-  .panel {
-    padding: 32px 18px;
-  }
-
-  .btn {
-    padding: 9px 14px;
-  }
+  background: red;
 }

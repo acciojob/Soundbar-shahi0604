@@ -1,40 +1,42 @@
-const buttonsRoot = document.getElementById("buttons");
-
 const sounds = ["applause", "boo", "gasp", "tada", "victory", "wrong"];
-const audioMap = new Map();
 
-const stopAll = () => {
-  audioMap.forEach((audio) => {
+const buttonsContainer = document.getElementById("buttons");
+
+
+function stopSounds() {
+  sounds.forEach(sound => {
+    const audio = document.getElementById(sound);
     audio.pause();
     audio.currentTime = 0;
   });
-};
+}
 
-const createButton = (label, className, onClick) => {
+sounds.forEach(sound => {
+  const audio = document.createElement("audio");
+  audio.src = `sounds/${sound}.mp3`;
+  audio.id = sound;
+  document.body.appendChild(audio);
+});
+
+
+sounds.forEach(sound => {
   const button = document.createElement("button");
-  button.className = className;
-  button.type = "button";
-  button.textContent = label;
-  button.addEventListener("click", onClick);
-  return button;
-};
+  button.innerText = sound;
+  button.className = "btn";
 
-sounds.forEach((sound) => {
-  const audio = new Audio(`sounds/${sound}.mp3`);
-  audio.preload = "auto";
-  audioMap.set(sound, audio);
-
-  const button = createButton(sound, "btn", () => {
-    stopAll();
-    audio.currentTime = 0;
-    audio.play();
+  button.addEventListener("click", () => {
+    stopSounds();
+    document.getElementById(sound).play();
   });
 
-  buttonsRoot.appendChild(button);
+  buttonsContainer.appendChild(button);
 });
 
-const stopButton = createButton("stop", "btn stop", () => {
-  stopAll();
-});
 
-buttonsRoot.appendChild(stopButton);
+const stopButton = document.createElement("button");
+stopButton.innerText = "Stop";
+stopButton.className = "stop";
+
+stopButton.addEventListener("click", stopSounds);
+
+buttonsContainer.appendChild(stopButton);
